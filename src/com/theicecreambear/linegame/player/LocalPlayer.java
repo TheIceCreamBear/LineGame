@@ -133,6 +133,21 @@ public class LocalPlayer extends AbstractPlayer {
 		
 		
 		// Check colliding
+		// After all this time, this is all i needed to make them die when running into each other
+		// though this isnt a good solution, should do this somewhere else TODO
+		if (this.id == 1) {
+			if (this.isColiding((LocalPlayer) GameEngine.instance.p2) && ((LocalPlayer) GameEngine.instance.p2).isColiding(this)) {
+				this.kill();
+				((LocalPlayer) GameEngine.instance.p2).kill();
+			}
+		}
+		if (this.id == 2) {
+			if (this.isColiding((LocalPlayer) GameEngine.instance.p1) && ((LocalPlayer) GameEngine.instance.p1).isColiding(this)) {
+				this.kill();
+				((LocalPlayer) GameEngine.instance.p1).kill();
+			}
+		}
+		
 		if (this.isColiding((LocalPlayer) GameEngine.instance.p1)) {
 			this.kill();
 		}
